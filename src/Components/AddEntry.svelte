@@ -7,12 +7,29 @@
 
     let inputField
 
-    function go(title){
-        let newObject = {
-            title: title
+    function go(newTitle){
+        let found = false
+
+        for(let i = 0; i < $data.length; i++){
+            if($data[i].title === newTitle){
+                found = true
+                alert("Existiert bereits")
+                break
+            }
         }
-        $data = [...$data, newObject] 
-        console.log($data)
+         
+        if(found === false){
+            let newObject = {
+                title: newTitle
+            }
+            $data = [...$data, newObject] 
+            console.log($data)
+        }
+
+        
+
+
+        
     }
 
 </script>
