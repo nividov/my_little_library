@@ -1,5 +1,4 @@
 <script>
-	import { push } from 'svelte-spa-router'
     import { addEntry } from "./DataHandling.js"
     import { data } from "../store.js"
     import HomeButton from "./HomeButton.svelte"
