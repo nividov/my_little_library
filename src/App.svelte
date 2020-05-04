@@ -1,33 +1,18 @@
 <script>
 	import Tailwindcss from './Tailwindcss.svelte';
-	export let name;
+	import Home from './Components/Home.svelte';
+	import AddEntry from './Components/AddEntry.svelte';
+	import BookList from './Components/BookList.svelte';
+	import Router from 'svelte-spa-router'
+
+
+	const routes = {
+		'/': Home,
+		"/AddEntry": AddEntry,
+		"/BookList": BookList
+	}
 </script>
 
 <Tailwindcss />
 
-<main>
-	<h1 class="pt-1">Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+<Router {routes} />
