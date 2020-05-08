@@ -21,6 +21,7 @@ const writableLocalStorage = (key, startValue) => {
 
 export const data = writableLocalStorage('data', [
     {
-        title: "Hello"
+        title: "Hello",
+        author: "Harry Windsor"
     }
 ]);

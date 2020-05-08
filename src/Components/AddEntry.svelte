@@ -7,30 +7,36 @@
 
     let inputField
 
-    function go(newTitle){
-        let found = false
+    function newEntry(newThing){
+        let form = newThing.currentTarget
+        let title = form.elements.namedItem("title").value
+        let author = form.elements.namedItem("author").value
 
         for(let i = 0; i < $data.length; i++){
-            if($data[i].title === newTitle){
-                found = true
+            if($data[i].title === title && $data[i].author === author ){
                 alert("Dieser Eintrag existiert bereits")
-                break
+                return
             }
         }
 
-        if(found === false){
-            let newObject = {
-                title: newTitle
-            }
-            $data = [...$data, newObject] 
-            console.log($data)
+        let newObject = {
+            title: title,
+            author: author
         }
+        $data = [...$data, newObject] 
+        console.log($data)
     }
 
 </script>
+
 <HomeButton />
+
 <div>Add Entry</div>
-<div>
-    <input type="text" bind:value={inputField}>
-    <button on:click={() => go(inputField)}>Go</button>
-</div>
+
+<form on:submit|preventDefault={newEntry} name="form">
+    <label for="title"> Titel </label>
+    <input type="text" name="title" bind:value={inputField}><br>
+    <label for="author"> Autor </label>
+    <input type="text" name="author"><br>
+    <button type="submit">Go</button>
+</form>
