@@ -9,9 +9,8 @@
 <HomeButton />
 <div>BookList</div>
 <div>
+    <div class="pr-2 w-1/2">Titel - Autor</div>
     {#each $data as item}
-
-        <div>{item.title}</div>
-
+        <div class="pr-2 w-1/2">{item.title} - {item.author}</div>
     {/each}
 </div>
