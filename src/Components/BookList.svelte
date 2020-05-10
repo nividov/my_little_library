@@ -18,9 +18,17 @@
 
 <div>BookList</div>
 <div>
-    <div class="pr-2 w-1/2">Titel - Autor</div>
+    <div class="flex justify-between">
+        <div class="flex-1">Titel</div> 
+        <div class="flex-1">Autor</div> 
+        <div class="flex-1"></div>
+    </div>
     {#each $data as item, i}
-        <div>{item.title} - {item.author} <span on:click={() => showDetail(i)} class="pl-8"> Bearbeiten</span></div>
+        <div class="flex justify-between">
+            <div class="flex-1">{item.title}</div> 
+            <div class="flex-1">{item.author}</div> 
+            <div class="flex-1" on:click={() => showDetail(i)}>Bearbeiten</div>
+        </div>
     {/each}
 </div>
 

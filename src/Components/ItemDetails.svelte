@@ -15,7 +15,9 @@
 
 <div class="fixed inset-0">
 	<div class="bg-black opacity-50 fixed inset-0 "></div>
-        <div class="fixed inset-0 px-16 pt-8 my-16 text-center">
+        <div class="fixed inset-0 mx-32 px-8 pt-8 my-16 bg-white">
+            <div on:click={closeDetail} class="text-right"><span class="cursor-pointer">x</span></div>
+
             <form 
             on:submit|preventDefault={(e) => {
                 changeEntry(e, itemNr)
@@ -32,6 +34,5 @@
 
                 <button type="submit">Save</button>
             </form>
-        <div on:click={closeDetail}>x</div>
 	</div>
 </div>
