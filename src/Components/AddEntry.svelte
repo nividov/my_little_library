@@ -13,5 +13,9 @@
     <input type="text" name="title"><br>
     <label for="author"> Autor </label>
     <input type="text" name="author"><br>
-    <button type="submit">Go</button>
+    <label for="genre"> Genre </label>
+    <input type="text" name="genre"><br>
+    <label for="location"> Standort </label>
+    <input type="text" name="location"><br>
+    <button type="submit"> Los! </button>
 </form>
