@@ -7,12 +7,20 @@
     export let itemNr
     let entry = $data[itemNr]
 
+    function closeDetail(){
+        dispatch("closeDetail")
+    }
+
 </script>
 
 <div class="fixed inset-0">
 	<div class="bg-black opacity-50 fixed inset-0 "></div>
         <div class="fixed inset-0 px-16 pt-8 my-16 text-center">
-            <form on:submit|preventDefault={(e) => changeEntry(e, itemNr)} action="">
+            <form 
+            on:submit|preventDefault={(e) => {
+                changeEntry(e, itemNr)
+                closeDetail()
+            }}>
                 <label for="title"> Titel </label>
                 <input type="text" name="title" value={entry.title||""}><br>
                 <label for="author"> Autor </label>
@@ -24,6 +32,6 @@
 
                 <button type="submit">Save</button>
             </form>
-        <div on:click={() => dispatch("closeDetail")}>x</div>
+        <div on:click={closeDetail}>x</div>
 	</div>
 </div>
