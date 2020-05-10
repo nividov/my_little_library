@@ -1,26 +1,12 @@
 <script>
     import { changeEntry } from "./DataHandling.js" 
-<<<<<<< HEAD
     import { data } from "../store.js"
     import {createEventDispatcher} from 'svelte';
     const dispatch = createEventDispatcher();
-=======
-
-    import {createEventDispatcher} from 'svelte';
-    const dispatch = createEventDispatcher();
-    import { data } from "../store.js"
->>>>>>> eafd069c8ab14b70afc2e9ce33a3b8ea5b874d51
 
     export let itemNr
     let entry = $data[itemNr]
 
-<<<<<<< HEAD
-=======
-    let obj = $data
-    console.log(obj[0].title)
-
-
->>>>>>> eafd069c8ab14b70afc2e9ce33a3b8ea5b874d51
 </script>
 
 <div class="fixed inset-0">
@@ -40,8 +26,4 @@
             </form>
         <div on:click={() => dispatch("closeDetail")}>x</div>
 	</div>
-<<<<<<< HEAD
 </div>
-=======
-</div>
->>>>>>> eafd069c8ab14b70afc2e9ce33a3b8ea5b874d51
