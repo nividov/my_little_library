@@ -27,23 +27,23 @@
     <div class="flex justify-between">
         <div class="flex-1">
             Titel 
-            <span on:click={() => sorting("title", sorted)}>^</span>
+            <span on:click={() => sorting("title", sorted)}>{sorted ? "^" : "v"}</span>
         </div> 
         <div class="flex-1">
             Autor
-            <span on:click={() => sorting("author", sorted)}>^</span>
+            <span on:click={() => sorting("author", sorted)}>{sorted ? "^" : "v"}</span>
         </div> 
         <div class="flex-1">
             Genre
-            <span on:click={() => sorting("genre", sorted)}>^</span>
+            <span on:click={() => sorting("genre", sorted)}>{sorted ? "^" : "v"}</span>
         </div> 
         <div class="flex-1">
             Standort
-            <span on:click={() => sorting("location", sorted)}>^</span>
+            <span on:click={() => sorting("location", sorted)}>{sorted ? "^" : "v"}</span>
         </div> 
         <div class="flex-1">
             Gelesen?
-            <span on:click={() => sorting("read", sorted)}>^</span>
+            <span on:click={() => sorting("read", sorted)}>{sorted ? "^" : "v"}</span>
         </div> 
         <div class="flex-1"></div>
     </div>
