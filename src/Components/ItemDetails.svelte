@@ -1,11 +1,11 @@
 <script>
     import { changeEntry } from "./DataHandling.js" 
-    import { data } from "../store.js"
+    import { entries } from "../store.js"
     import {createEventDispatcher} from 'svelte';
     const dispatch = createEventDispatcher();
 
     export let itemNr
-    let entry = $data[itemNr]
+    let entry = $entries[itemNr]
 
     function closeDetail(){
         dispatch("closeDetail")

@@ -1,9 +1,9 @@
 <script>
-    import { data } from "../store.js"
+    import { entries } from "../store.js"
     import { onMount } from 'svelte';
     import HomeButton from "./HomeButton.svelte"
     import ItemDetails from "./ItemDetails.svelte"
-    data.useLocalStorage();
+    entries.useLocalStorage();
 
     onMount(() => {
         sortAsBefore()
@@ -25,11 +25,11 @@
         let storageBool = JSON.parse(localStorage.getItem("sortingDirection"))
         localStorage.setItem("sortingDirection", !storageBool)
         sortingDirection = !storageBool
-        data.sort(key, sortingDirection)
+        entries.sort(key, sortingDirection)
     }
 
     function sortAsBefore(){
-        data.sort(lastSorted, sortingDirection);
+        entries.sort(lastSorted, sortingDirection);
     }
 
     function detailClosed(){
@@ -66,7 +66,7 @@
         </div> 
         <div class="flex-1"></div>
     </div>
-    {#each $data as item, i}
+    {#each $entries as item, i}
         <div class="flex justify-between">
             <div class="flex-1">{item.title}</div> 
             <div class="flex-1">{item.author || "-"}</div> 

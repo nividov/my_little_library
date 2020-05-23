@@ -1,8 +1,8 @@
-import { data } from "../store.js"
+import { entries } from "../store.js"
 import { get } from 'svelte/store';
 
 export function addNewEntry(userInput) {
-    let dataStore = get(data)
+    let dataStore = get(entries)
     let newObject = processInput(userInput)
     if(!checkForDuplicates(newObject, dataStore)){
         addInputToData(newObject, dataStore)
@@ -10,7 +10,7 @@ export function addNewEntry(userInput) {
 }
 
 export function changeEntry(userInput, index){
-    let dataStore = get(data)
+    let dataStore = get(entries)
     let newObject = processInput(userInput)
     if(!checkForDuplicates(newObject, dataStore)){
         changeData(newObject, dataStore, index)
@@ -38,7 +38,7 @@ function processInput(input){
 function checkForDuplicates(input, dataStore){
     //both these methods do not work, i don't know why...
 
-    // console.log(get(data).indexOf(input))    //ergebnis ist immer -1?? wieso??
+    // console.log(get(entries).indexOf(input))    //ergebnis ist immer -1?? wieso??
 
     // for(let i = 0; i < dataStore.length; i++){
     //     console.log(dataStore[i], input)
@@ -50,10 +50,10 @@ function checkForDuplicates(input, dataStore){
 }
 
 function addInputToData(newEntry, dataStore){
-    data.set([...dataStore, newEntry])
+    entries.set([...dataStore, newEntry])
 }
 
 function changeData(newEntry, dataStore, index){
     dataStore[index] = newEntry
-    data.set(dataStore)
+    entries.set(dataStore)
 }
