@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { writable, get } from 'svelte/store';
 
 const writableLocalStorage = (key, startValue) => {
   const { subscribe, set } = writable(startValue);
@@ -15,6 +15,24 @@ const writableLocalStorage = (key, startValue) => {
       subscribe(current => {
         localStorage.setItem(key, JSON.stringify(current));
       });
+    },
+    sort(key){
+      let obj = get(this)
+      obj.sort(function(a, b) {
+        let nameA = a[key]
+        let nameB = b[key]
+        if(typeof a[key] !== "boolean"){  //check if boolean. if not, skip the uppercase
+          nameA = nameA.toUpperCase(); // ignore upper and lowercase
+          nameB = nameB.toUpperCase(); // ignore upper and lowercase
+        }
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+      })
+      this.set(obj)
     }
   };
 }

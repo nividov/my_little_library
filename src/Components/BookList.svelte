@@ -12,6 +12,10 @@
         itemNr = itemNumber
     }
 
+    function sorting(key){
+        data.sort(key)
+    }
+
 </script>
 
 <HomeButton />
@@ -19,11 +23,26 @@
 <div>BookList</div>
 <div>
     <div class="flex justify-between">
-        <div class="flex-1">Titel</div> 
-        <div class="flex-1">Autor</div> 
-        <div class="flex-1">Genre</div> 
-        <div class="flex-1">Standort</div> 
-        <div class="flex-1">Gelesen?</div> 
+        <div class="flex-1">
+            Titel 
+            <span on:click={() => sorting("title")}>^</span>
+        </div> 
+        <div class="flex-1">
+            Autor
+            <span on:click={() => sorting("author")}>^</span>
+        </div> 
+        <div class="flex-1">
+            Genre
+            <span on:click={() => sorting("genre")}>^</span>
+        </div> 
+        <div class="flex-1">
+            Standort
+            <span on:click={() => sorting("location")}>^</span>
+        </div> 
+        <div class="flex-1">
+            Gelesen?
+            <span on:click={() => sorting("read")}>^</span>
+        </div> 
         <div class="flex-1"></div>
     </div>
     {#each $data as item, i}
