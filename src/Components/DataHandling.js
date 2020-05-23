@@ -22,13 +22,16 @@ function processInput(input){
     let title = form.elements.namedItem("title").value
     let author = form.elements.namedItem("author").value
     let genre = form.elements.namedItem("genre").value    
-    let location = form.elements.namedItem("location").value    
+    let location = form.elements.namedItem("location").value
+    let read = form.elements.namedItem("read").checked
+
 
     return {
         title: title,
         author: author,
         genre: genre,
-        location: location
+        location: location,
+        read: read
     }
 }
 

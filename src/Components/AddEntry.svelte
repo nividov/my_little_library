@@ -17,5 +17,7 @@
     <input type="text" name="genre"><br>
     <label for="location"> Standort </label>
     <input type="text" name="location"><br>
+    <label for="location"> schon gelesen? </label>
+    <input type="checkbox" name="read"><br>
     <button type="submit"> Los! </button>
 </form>
