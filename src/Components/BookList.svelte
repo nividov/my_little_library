@@ -1,8 +1,13 @@
 <script>
     import { data } from "../store.js"
+    import { onMount } from 'svelte';
     import HomeButton from "./HomeButton.svelte"
     import ItemDetails from "./ItemDetails.svelte"
     data.useLocalStorage();
+
+    onMount(() => {
+        sortAsBefore()
+	});
 
     let itemDetails = false
     let itemNr
@@ -11,11 +16,25 @@
         itemDetails = true
         itemNr = itemNumber
     }
+    
+    let lastSorted = localStorage.getItem("lastSorted") || "author"
+    let sortingDirection = JSON.parse(localStorage.getItem("sortingDirection"))
 
-    let sorted = false
-    function sorting(key, alreadySorted){
-        sorted = !sorted
-        data.sort(key, alreadySorted)
+    function sorting(key){
+        localStorage.setItem("lastSorted", key)
+        let storageBool = JSON.parse(localStorage.getItem("sortingDirection"))
+        localStorage.setItem("sortingDirection", !storageBool)
+        sortingDirection = !storageBool
+        data.sort(key, sortingDirection)
+    }
+
+    function sortAsBefore(){
+        data.sort(lastSorted, sortingDirection);
+    }
+
+    function detailClosed(){
+        itemDetails = false
+        sortAsBefore()
     }
 
 </script>
@@ -27,23 +46,23 @@
     <div class="flex justify-between">
         <div class="flex-1">
             Titel 
-            <span on:click={() => sorting("title", sorted)}>{sorted ? "^" : "v"}</span>
+            <span on:click={() => sorting("title")}>{sortingDirection ? "^" : "v"}</span>
         </div> 
         <div class="flex-1">
             Autor
-            <span on:click={() => sorting("author", sorted)}>{sorted ? "^" : "v"}</span>
+            <span on:click={() => sorting("author")}>{sortingDirection ? "^" : "v"}</span>
         </div> 
         <div class="flex-1">
             Genre
-            <span on:click={() => sorting("genre", sorted)}>{sorted ? "^" : "v"}</span>
+            <span on:click={() => sorting("genre")}>{sortingDirection ? "^" : "v"}</span>
         </div> 
         <div class="flex-1">
             Standort
-            <span on:click={() => sorting("location", sorted)}>{sorted ? "^" : "v"}</span>
+            <span on:click={() => sorting("location")}>{sortingDirection ? "^" : "v"}</span>
         </div> 
         <div class="flex-1">
             Gelesen?
-            <span on:click={() => sorting("read", sorted)}>{sorted ? "^" : "v"}</span>
+            <span on:click={() => sorting("read")}>{sortingDirection ? "^" : "v"}</span>
         </div> 
         <div class="flex-1"></div>
     </div>
@@ -62,5 +81,5 @@
 </div>
 
 {#if itemDetails}
-    <ItemDetails {itemNr} on:closeDetail={() => itemDetails = false}/>
+    <ItemDetails {itemNr} on:closeDetail={detailClosed}/>
 {/if}
