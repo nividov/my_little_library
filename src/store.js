@@ -16,7 +16,7 @@ const writableLocalStorage = (key, startValue) => {
         localStorage.setItem(key, JSON.stringify(current));
       });
     },
-    sort(key){
+    sort(key, sorted){
       let obj = get(this)
       obj.sort(function(a, b) {
         let nameA = a[key]
@@ -26,10 +26,18 @@ const writableLocalStorage = (key, startValue) => {
           nameB = nameB.toUpperCase(); // ignore upper and lowercase
         }
         if (nameA < nameB) {
-          return -1;
+          if(sorted){
+            return -1;
+          } else {
+            return 1
+          }
         }
         if (nameA > nameB) {
-          return 1;
+          if(!sorted){
+            return -1;
+          } else {
+            return 1
+          }
         }
       })
       this.set(obj)

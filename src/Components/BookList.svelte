@@ -12,8 +12,10 @@
         itemNr = itemNumber
     }
 
-    function sorting(key){
-        data.sort(key)
+    let sorted = false
+    function sorting(key, alreadySorted){
+        sorted = !sorted
+        data.sort(key, alreadySorted)
     }
 
 </script>
@@ -25,23 +27,23 @@
     <div class="flex justify-between">
         <div class="flex-1">
             Titel 
-            <span on:click={() => sorting("title")}>^</span>
+            <span on:click={() => sorting("title", sorted)}>^</span>
         </div> 
         <div class="flex-1">
             Autor
-            <span on:click={() => sorting("author")}>^</span>
+            <span on:click={() => sorting("author", sorted)}>^</span>
         </div> 
         <div class="flex-1">
             Genre
-            <span on:click={() => sorting("genre")}>^</span>
+            <span on:click={() => sorting("genre", sorted)}>^</span>
         </div> 
         <div class="flex-1">
             Standort
-            <span on:click={() => sorting("location")}>^</span>
+            <span on:click={() => sorting("location", sorted)}>^</span>
         </div> 
         <div class="flex-1">
             Gelesen?
-            <span on:click={() => sorting("read")}>^</span>
+            <span on:click={() => sorting("read", sorted)}>^</span>
         </div> 
         <div class="flex-1"></div>
     </div>
