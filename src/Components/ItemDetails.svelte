@@ -31,7 +31,8 @@
                 <input type="text" name="genre" value={entry.genre||""}><br>
                 <label for="location"> Standort </label>
                 <input type="text" name="location" value={entry.location||""}><br>
-
+                <label for="location"> schon gelesen? </label>
+                <input type="checkbox" name="read" bind:checked={entry.read}><br>
                 <button type="submit">Save</button>
             </form>
 	</div>

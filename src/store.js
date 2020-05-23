@@ -21,7 +21,24 @@ const writableLocalStorage = (key, startValue) => {
 
 export const data = writableLocalStorage('data', [
     {
-        title: "Hello",
-        author: "Harry Windsor"
+      title: "Hello",
+      author: "Harry Windsor",
+      genre: "Fantasy",
+      location: "Algund",
+      read: false
+    },
+    {
+      title: "Fresh",
+      author: "Freshi Alman",
+      genre: "Comic",
+      location: "Algund",
+      read: true
+    },
+    {
+      title: "Test",
+      author: "Test",
+      genre: "tset",
+      location: "Brixen",
+      read: true
     }
 ]);
