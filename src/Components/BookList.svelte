@@ -1,4 +1,5 @@
 <script>
+    import { get } from 'svelte/store';
     import { push } from 'svelte-spa-router'
     import { entries } from "../store.js"
     import { onMount } from 'svelte';
@@ -43,10 +44,10 @@
         sortAsBefore()
     }
 
-    function saveData() {
-        var fileContent = {hello: 'world'};
-        var bb = new Blob([JSON.stringify(fileContent, null, 2)], {type : 'application/json'});
-        var a = document.createElement('a');
+    function saveData(data) {
+        let fileContent = get(data);
+        let bb = new Blob([JSON.stringify(fileContent, null, 2)], {type : 'application/json'});
+        let a = document.createElement('a');
         a.download = 'download.txt';
         a.href = window.URL.createObjectURL(bb);
         a.click();
@@ -56,7 +57,7 @@
 
 <HomeButton/>
 <button on:click={() => changePage("/AddEntry")}>Buch hinzufügen</button>
-<button on:click={saveData}>Daten herunterladen</button>
+<button on:click={() => saveData(entries)}>Daten herunterladen</button>
 
 <div>BookList</div>
 
