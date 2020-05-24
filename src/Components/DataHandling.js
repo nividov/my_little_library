@@ -57,3 +57,9 @@ function changeData(newEntry, dataStore, index){
     dataStore[index] = newEntry
     entries.set(dataStore)
 }
+
+export function deleteEntry(index){
+    let dataStore = get(entries)
+    dataStore.splice(index, 1)
+    entries.set(dataStore)
+}

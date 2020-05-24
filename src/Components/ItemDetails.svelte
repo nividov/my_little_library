@@ -1,5 +1,5 @@
 <script>
-    import { changeEntry } from "./DataHandling.js" 
+    import { changeEntry, deleteEntry } from "./DataHandling.js" 
     import { entries } from "../store.js"
     import {createEventDispatcher} from 'svelte';
     const dispatch = createEventDispatcher();
@@ -32,8 +32,9 @@
                 <label for="location"> Standort </label>
                 <input type="text" name="location" value={entry.location||""}><br>
                 <label for="location"> schon gelesen? </label>
-                <input type="checkbox" name="read" bind:checked={entry.read}><br>
+                <input type="checkbox" name="read" checked={entry.read}><br>
                 <button type="submit">Save</button>
             </form>
+            <button on:click={() => deleteEntry(itemNr)}>Delete </button>
 	</div>
 </div>
