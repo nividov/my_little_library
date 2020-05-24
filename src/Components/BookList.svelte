@@ -43,10 +43,20 @@
         sortAsBefore()
     }
 
+    function saveData() {
+        var fileContent = {hello: 'world'};
+        var bb = new Blob([JSON.stringify(fileContent, null, 2)], {type : 'application/json'});
+        var a = document.createElement('a');
+        a.download = 'download.txt';
+        a.href = window.URL.createObjectURL(bb);
+        a.click();
+    }
+
 </script>
 
-<HomeButton />
+<HomeButton/>
 <button on:click={() => changePage("/AddEntry")}>Buch hinzufügen</button>
+<button on:click={saveData}>Daten herunterladen</button>
 
 <div>BookList</div>
 

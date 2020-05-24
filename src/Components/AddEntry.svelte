@@ -1,6 +1,12 @@
 <script>
-    import { addNewEntry } from "./DataHandling.js" 
+    import { addNewEntry } from "./DataHandling.js"
+	import { push } from 'svelte-spa-router'
     import HomeButton from "./HomeButton.svelte"
+
+    function submitForm(event){
+        addNewEntry(event)
+        push("/BookList")
+    }
 
 </script>
 
@@ -8,7 +14,7 @@
 
 <div>Add a new entry</div>
 
-<form on:submit|preventDefault={addNewEntry} name="form">
+<form on:submit|preventDefault={submitForm} name="form">
     <label for="title"> Titel </label>
     <input type="text" name="title"><br>
     <label for="author"> Autor </label>
