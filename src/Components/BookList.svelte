@@ -1,4 +1,5 @@
 <script>
+    import { push } from 'svelte-spa-router'
     import { entries } from "../store.js"
     import { onMount } from 'svelte';
     import HomeButton from "./HomeButton.svelte"
@@ -8,6 +9,11 @@
     onMount(() => {
         sortAsBefore()
 	});
+
+
+    function changePage(destination){
+        push(destination)
+    }
 
     let itemDetails = false
     let itemNr
@@ -40,8 +46,10 @@
 </script>
 
 <HomeButton />
+<button on:click={() => changePage("/AddEntry")}>Buch hinzufügen</button>
 
 <div>BookList</div>
+
 <div>
     <div class="flex justify-between">
         <div class="flex-1">
