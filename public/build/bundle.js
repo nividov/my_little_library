@@ -1320,7 +1320,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			div.textContent = "Hello and Welcome to your little library";
+    			div.textContent = "Hello and Welcome to your little library v2";
     			t1 = space();
     			button0 = element("button");
     			button0.textContent = "Add entry";
@@ -1328,8 +1328,8 @@ var app = (function () {
     			button1 = element("button");
     			button1.textContent = "Show list";
     			add_location(div, file, 12, 0, 149);
-    			add_location(button0, file, 13, 0, 202);
-    			add_location(button1, file, 14, 0, 271);
+    			add_location(button0, file, 13, 0, 205);
+    			add_location(button1, file, 14, 0, 274);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
